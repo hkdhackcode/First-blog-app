@@ -1,0 +1,64 @@
+{% extends "blog/base.htm" %}
+
+{% block title %}
+    
+    Blogg - {{block.supper}}
+
+{% endblock %}
+
+
+
+{% block content %}
+
+    <div class="content">
+        <div class="section-inner clearfix">
+            
+            <p>&#187; <a href="{% url 'post_add' %}">Add post</a></p>
+            <table>
+            
+                {% for post in posts %}
+                <tr>
+                    <td class="post-title">
+                        <h3>
+                            <a href="{{ post.get_absolute_url }}">{{post.title|capfirst }}</a>
+                        </h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="post-info">
+                        <p>
+                            {% include 'blog/post_info.htm' %}
+                        </p>
+                    </td>
+                </tr>
+                <tr><td></td></tr>
+                <tr><td></td></tr>
+                <tr><td></td></tr>
+                
+                {% empty %}
+                    <p>There is no posts</p>
+                {% endfor %} 
+            </table>
+
+        </div>
+
+    </div>
+    <div class="pagination">
+        <div class="section-inner clearfix">
+            <p>
+                {% if posts.has_previous %}
+                    <a href="?page={{ posts.previous_page_number }}">< Prev</a>|
+                {% endif %}
+
+                {% if posts.has_next %}
+                    <a href="?page={{ posts.next_page_number }}">Next ></a>
+                {% endif %}
+
+                <span>Page {{ posts.number }} of {{ posts.paginator.num_pages }}</span>
+            </p>
+        </div>
+
+    </div>
+
+
+{% endblock %}

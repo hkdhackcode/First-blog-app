@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Document{% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <a href = "{% url 'post_list' %}">Home</a>|
+        <a href="#">Contact</a>|
+        <a href="#">About</a>|
+        <a href="#">Career</a>
+        
+    </nav>
+
+    {% block content %}
+
+    {% endblock %}
+
+    <hr>
+
+    {% block footer %}
+        This is footer
+    {% endblock %}
+
+
+</body>
+</html>

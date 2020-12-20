@@ -1,0 +1,27 @@
+{% extends 'blog/base.htm' %}
+
+{% block title %}
+    {{ post.title|capfirst }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="content">
+        <div class="section-inner clearfix">
+            <table>
+                <tr bgcolor = "darkorange" align="center">
+                    <td>  <font size = "+6"  color='white'>{{ post.title|capfirst }}</font></td>
+                </tr>
+            </table>
+            <p class="post-info">
+                {% include 'blog/post_info.htm' %}
+                | <span><a href="{% url 'post_update' post.id %}">Edit</a></span>
+            </p>
+            <p class="post-detail">
+                {{ post.content }}
+            </p>
+
+        </div>
+    </div>
+
+{% endblock %}
